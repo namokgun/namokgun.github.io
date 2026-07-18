@@ -2,36 +2,62 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+
+    -webkit-user-select:none;
+    user-select:none;
+    -webkit-touch-callout:none;
 }
 
-html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+html,
 body{
-    margin: 0;
-    width:100vw;
-    height:100vh;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#fff;
+}
+
+body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:rgb(255, 255, 255);
-    overflow:hidden;
-    position: fixed;
-    touch-action: manipulation;
+
+    overscroll-behavior:none;
+    touch-action:none;
 }
 
-#tomato{    
-    width:300px;
+#tomato{
+
+    width:60vw;
+    max-width:300px;
+    min-width:180px;
+    height:auto;
+
+    display:block;
+
     cursor:pointer;
-    user-select:none;
+
     transition:transform 0.08s ease;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
+
+    -webkit-user-drag:none;
+    -webkit-user-select:none;
+    user-select:none;
+
+    -webkit-touch-callout:none;
+    -webkit-tap-highlight-color:transparent;
+
+    outline:none;
+    border:none;
+
+    touch-action:none;
 }
 
 #tomato.pressed{
     transform:scaleX(1.08) scaleY(0.88);
+}
+
+#tomato:focus,
+#tomato:focus-visible,
+#tomato:active{
+    outline:none;
+    border:none;
 }
