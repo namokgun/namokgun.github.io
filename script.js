@@ -44,3 +44,7 @@ tomato.addEventListener("pointerdown", press);
 tomato.addEventListener("pointerup", release);
 tomato.addEventListener("pointerleave", release);
 tomato.addEventListener("pointercancel", release);
+
+document.addEventListener("touchmove", function (e) {
+    e.preventDefault();
+}, { passive: false });
