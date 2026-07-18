@@ -13,19 +13,23 @@ body{
     background:rgb(255, 255, 255);
     overflow:hidden;
 }
-#dino {
-    width: 60vw;
-    max-width: 300px;
-    min-width: 180px;
-    height: auto;
-    -webkit-user-select: none;
+
+#tomato{    
+    width:300px;
+    cursor:pointer;
+    user-select:none;
+    transition:transform 0.08s ease;
     user-select: none;
+    -webkit-user-select: none;
+
+    -webkit-user-drag: none;
+    user-drag: none;
 
     -webkit-touch-callout: none;
 
-    -webkit-user-drag: none;
-
     touch-action: manipulation;
+}
 
-    cursor: pointer
+#tomato.pressed{
+    transform:scaleX(1.08) scaleY(0.88);
 }
