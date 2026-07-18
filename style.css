@@ -10,7 +10,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:black;
+    background:rgb(0, 0, 0);
     overflow:hidden;
 }
 
@@ -24,3 +24,4 @@ body{
 #tomato.pressed{
     transform:scaleX(1.08) scaleY(0.88);
 }
+
