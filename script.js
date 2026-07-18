@@ -1,23 +1,46 @@
 const tomato = document.getElementById("tomato");
 
-const pop = new Audio("pop.mp3");
+const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+let popBuffer;
+
+async function loadSound() {
+    const response = await fetch("pop.mp3");
+    const arrayBuffer = await response.arrayBuffer();
+    popBuffer = await audioContext.decodeAudioData(arrayBuffer);
+}
+
+loadSound();
+
+document.addEventListener("pointerdown", () => {
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+}, { once: true });
+
+
+function playSound() {
+    if (!popBuffer) return;
+
+    const source = audioContext.createBufferSource();
+    source.buffer = popBuffer;
+
+    source.connect(audioContext.destination);
+    source.start(0);
+}
+
 
 function press() {
-
     tomato.classList.add("pressed");
-
-    pop.currentTime = 0;
-    pop.play();
+    playSound();
 }
+
 
 function release() {
     tomato.classList.remove("pressed");
 }
 
-tomato.addEventListener("mousedown", press);
-tomato.addEventListener("mouseup", release);
-tomato.addEventListener("mouseleave", release);
-
-// 모바일
-tomato.addEventListener("touchstart", press);
-tomato.addEventListener("touchend", release);
+tomato.addEventListener("pointerdown", press);
+tomato.addEventListener("pointerup", release);
+tomato.addEventListener("pointerleave", release);
+tomato.addEventListener("pointercancel", release);
